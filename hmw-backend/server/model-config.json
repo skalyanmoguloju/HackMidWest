@@ -16,5 +16,9 @@
   "exercise": {
     "dataSource": "mongoDS",
     "public": true
+  },
+  "routine": {
+    "dataSource": "mongoDS",
+    "public": true
   }
 }
