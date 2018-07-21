@@ -20,5 +20,9 @@
   "routine": {
     "dataSource": "mongoDS",
     "public": true
+  },
+  "workout": {
+    "dataSource": "mongoDS",
+    "public": true
   }
 }

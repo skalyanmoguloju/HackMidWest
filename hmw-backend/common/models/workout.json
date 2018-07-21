@@ -1,0 +1,41 @@
+{
+  "name": "workout",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "ownerId": {
+      "type": "string",
+      "required": true
+    },
+    "routineId": {
+      "type": "string",
+      "required": true
+    },
+    "startDateTime": {
+      "type": "date"
+    },
+    "endDateTime": {
+      "type": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "exerciseList": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
