@@ -1,1 +1,12 @@
-{}
+{
+  "mongoDS": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "hackmidwest",
+    "password": "",
+    "name": "mongoDS",
+    "user": "",
+    "connector": "mongodb"
+  }
+}
