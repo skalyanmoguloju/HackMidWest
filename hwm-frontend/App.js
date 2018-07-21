@@ -2,6 +2,7 @@ import React from 'react';
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import { Header } from 'react-native-elements';
 import Home from './Components/Home/Home';
+import Routine from './Components/Routine/Routine';
 
 
 const HeaderMenu = (props) => <Header
@@ -28,7 +29,7 @@ const App = createDrawerNavigator({
         screen: Home,
     },
     Routines: {
-        screen: Home,
+        screen: Routine,
     },
     Workouts: {
         screen: Home,
