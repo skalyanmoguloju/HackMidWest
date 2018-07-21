@@ -24,5 +24,13 @@
   "workout": {
     "dataSource": "mongoDS",
     "public": true
+  },
+  "user": {
+    "dataSource": "mongoDS",
+    "public": true
+  },
+  "profile": {
+    "dataSource": "mongoDS",
+    "public": true
   }
 }
