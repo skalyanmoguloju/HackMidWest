@@ -1,23 +1,45 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import { Header } from 'react-native-elements';
+import Home from './Components/Home/Home';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Welcome Hack Midwest</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const HeaderMenu = (props) => <Header
+    leftComponent={{ icon: 'menu', color: '#fff', onPress:props.navigation.openDrawer }}
+    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+/>
+
+
+
+const Main = createStackNavigator({
+    Home: {
+        navigationOptions: {
+            header: HeaderMenu,
+        },
+        screen : Home,
+    },
 });
+
+const App = createDrawerNavigator({
+    Home: {
+        screen: Main,
+    },
+    Profile: {
+        screen: Home,
+    },
+    Routines: {
+        screen: Home,
+    },
+    Workouts: {
+        screen: Home,
+    },
+    Trainer: {
+        screen: Home,
+    },
+
+});
+
+
+
+export default App;
+
