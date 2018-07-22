@@ -1,10 +1,10 @@
 import React from 'react';
-import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-cards';
 import { StyleSheet, ScrollView, Button, Picker } from 'react-native';
-import {Text, FormInput } from 'react-native-elements';
+import {Text, FormInput, Icon } from 'react-native-elements';
 import PickerSelect from 'react-native-picker-select';
 import Set from '../Routine/Set';
 import Time from '../Routine/Time';
+import { Col, Row, Grid } from "react-native-easy-grid";
 
 const pickerSelectStyles = StyleSheet.create({
     inputIOS: {
@@ -20,7 +20,7 @@ const pickerSelectStyles = StyleSheet.create({
     },
 });
 
-class Excercise extends React.Component {
+class Exercise extends React.Component {
     constructor(props) {
         super(props);
 
@@ -54,45 +54,70 @@ class Excercise extends React.Component {
     };
 
     onSelectionChange = (selectValue) => {
-        const ex = this.state.exercises.filter(exercise => exercise.id === selectValue);
-        console.log(ex.movementType);
-        if(ex[0].movementType === 'repetitions') {
-            console.log("ajfla");
-            this.setState({
-                isSetVisible: true,
-                isTimeVisible: false,
-            });
+        if(this.props.exercise.id!==selectValue) {
+            const ex = this.state.exercises.filter(exercise => exercise.id === selectValue);
+            this.props.onUpdateExercise(this.props.index, ex[0])
         }
-        else {
-            console.log("dvjytjnyg");
-
-            this.setState({
-                isSetVisible: false,
-                isTimeVisible: true,
-            });
-        }
-        //this.props.onUpdateExercise(this.props.index)
     };
 
     render() {
+        // console.log(this.props.exercise)
         return (
             <ScrollView>
-                <Text>Exercise</Text>
-                <PickerSelect
-                    items={this.getExercises()}
-                    onValueChange={this.onSelectionChange}
-                    style={{ ...pickerSelectStyles }}
-                />
-                {this.state.isSetVisible &&
-                    <Set />
+                <Grid>
+                    <Col>
+                        <Text>Exercise</Text>
+                        <PickerSelect
+                            value={this.props.exercise.id}
+                            items={this.getExercises()}
+                            onValueChange={this.onSelectionChange}
+                            style={{ ...pickerSelectStyles }}
+                        />
+                    </Col>
+                    <Col style={{ width: 40 }}>
+                        <Icon
+                            name="delete"
+                            color="red"
+                            onPress={() => {this.props.onRemoveExercise(this.props.index)}}
+                        />}
+                    </Col>
+                </Grid>
+                {this.props.exercise.sets &&
+                this.props.exercise.sets.map((set, index) => (
+                    <Set
+                        key={index}
+                        index={index}
+                        reps={set.reps}
+                        weight={set.weight}
+                        onUpdateReps={(reps) => this.props.onUpdateSet(this.props.index,index, reps, set.weight)}
+                        onUpdateWeight={(weight) => this.props.onUpdateSet(this.props.index,index, set.reps, weight)}
+                    />
+                ))
                 }
-                {this.state.isTimeVisible &&
-                    <Time />
+                {this.props.exercise.times &&
+                this.props.exercise.times.map((time, index) => (
+                    <Time
+                        key={index}
+                        index={index}
+                        minutes={time.minutes}
+                        seconds={time.seconds}
+                        onUpdateMinutes={(minutes) => this.props.onUpdateTime(this.props.index,index, minutes, time.seconds)}
+                        onUpdateSeconds={(seconds) => this.props.onUpdateTime(this.props.index,index, time.minutes, seconds)}
+                    />
+                ))
+                }
+
+                {this.props.exercise.times &&
+                    <Button title="Add Sets" onPress={() => this.props.onAddTime(this.props.index)}/>
+                }
+
+                {this.props.exercise.sets &&
+                <Button title="Add Sets" onPress={() => this.props.onAddSet(this.props.index)}/>
                 }
             </ScrollView>
         );
     }
 }
 
-export default Excercise;
+export default Exercise;
 
