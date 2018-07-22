@@ -1,7 +1,8 @@
 import React from 'react';
-import {ScrollView, Text} from 'react-native';
+import {ScrollView, Text, StyleSheet, View} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
-import {Header} from 'react-native-elements';
+import {Header, Avatar, FormInput} from 'react-native-elements';
+import {Col, Row, Grid} from 'react-native-easy-grid';
 
 const HeaderMenu = (props) => <Header
   leftComponent={{ icon: 'menu', color: '#fff', onPress:props.navigation.openDrawer }}
@@ -18,8 +19,12 @@ class ProfileComponent extends React.Component {
       user: {},
     }
 
-    this.retrieveProfileData = this.retrieveProfileData;
-    this.retrieveUserData = this.retrieveUserData;
+    this.retrieveProfileData = this.retrieveProfileData.bind(this);
+    this.retrieveUserData = this.retrieveUserData.bind(this);
+    this.createAvatarTextForUsername = this.createAvatarTextForUsername.bind(this);
+    this.getFeetComponentForHeight = this.getFeetComponentForHeight.bind(this);
+    this.getInchesComponentForHeight = this.getInchesComponentForHeight.bind(this);
+    this.getWeightDisplay = this.getWeightDisplay.bind(this);
   }
 
   retrieveProfileData() {
@@ -39,9 +44,11 @@ class ProfileComponent extends React.Component {
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);
-        this.setState({
-          user: responseJson,
-          profile: this.retrieveProfileData(),
+        this.retrieveProfileData().then((profileData) => {
+          this.setState({
+            user: responseJson,
+            profile: profileData
+          });
         });
       })
       .catch((error) => {
@@ -53,14 +60,121 @@ class ProfileComponent extends React.Component {
     return this.retrieveUserData();
   }
 
+  createAvatarTextForUsername() {
+    if (!this.state.user || !this.state.user.name) {
+      return "";
+    }
+
+    const nameTokens = this.state.user.name.split(" ");
+    return nameTokens[0].charAt(0) + nameTokens[1].charAt(0);
+  }
+
+  getFeetComponentForHeight() {
+    if (!this.state.profile || !this.state.profile.biometrics) {
+     return "";
+    }
+
+    const heightInInches = this.state.profile.biometrics.heightInInches;
+    return heightInInches ? Math.trunc(heightInInches / 12).toString() : "";
+  }
+
+  getInchesComponentForHeight() {
+    if (!this.state.profile || !this.state.profile.biometrics) {
+      return "";
+    }
+
+    const heightInInches = this.state.profile.biometrics.heightInInches;
+    return heightInInches ? (heightInInches % 12).toString() : "";
+  }
+
+  getWeightDisplay() {
+    if (!this.state.profile || !this.state.profile.biometrics) {
+      return "";
+    }
+
+    const weightInPounds = this.state.profile.biometrics.weightInPounds;
+    return weightInPounds ? weightInPounds.toString() : "";
+  }
+
   render() {
     return (
-      <ScrollView>
-        <Text>Profile data for {this.state.user.name}</Text>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={{
+          flex: 2,
+          paddingBottom: 20,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Avatar
+            large
+            rounded
+            title={this.createAvatarTextForUsername()}
+          />
+          <Text>{this.state.user.name}</Text>
+          <Text>{this.state.user.email}</Text>
+        </View>
+        <Text style={{
+          fontSize: 20,
+          fontWeight: 'bold'
+        }}>
+          Biometrics
+        </Text>
+        <View>
+          <Grid>
+            <Row>
+              <Text>Height</Text>
+            </Row>
+            <Row>
+              <Col size={25}>
+                <FormInput
+                  keyboardType="number-pad"
+                  value={this.getFeetComponentForHeight()}
+                />
+              </Col>
+              <Col size={15}>
+                <Text>feet</Text>
+              </Col>
+              <Col size={25}>
+                <FormInput
+                  value={this.getInchesComponentForHeight()}
+                  keyboardType="number-pad"
+                />
+              </Col>
+              <Col size={15}>
+                <Text>inches</Text>
+              </Col>
+              <Col size={20}>
+              </Col>
+            </Row>
+            <Row>
+              <Text>Weight</Text>
+            </Row>
+            <Row>
+              <Col size={25}>
+                <FormInput
+                  value={this.getWeightDisplay()}
+                  keyboardType="number-pad"
+                />
+              </Col>
+              <Col size={15}>
+                <Text>lbs</Text>
+              </Col>
+              <Col size={60}>
+              </Col>
+            </Row>
+          </Grid>
+        </View>
       </ScrollView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingVertical: 25,
+    paddingHorizontal: 10
+  }
+});
 
 const Profile = createStackNavigator({
   Home: {

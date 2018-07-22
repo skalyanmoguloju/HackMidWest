@@ -14,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Workout.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Workout.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Components/Workout/Workout.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
@@ -31,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/Components/Routine/Routine.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="18" column="11" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="18" selection-end-column="11" />
+              <caret line="18" column="11" selection-start-line="13" selection-start-column="4" selection-end-line="18" selection-end-column="11" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -59,8 +59,8 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="20" column="21" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="21" />
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -68,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+            <state relative-caret-position="248">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -126,8 +126,9 @@
       <find>routines</find>
       <find>console</find>
       <find>getRoutines</find>
-      <find>console.log</find>
       <find>AddRoutine</find>
+      <find>&lt;&lt;&lt;&lt;</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -136,13 +137,15 @@
         <option value="$PROJECT_DIR$/Components/Home/Home.js" />
         <option value="$PROJECT_DIR$/Components/Profile/Profile.js" />
         <option value="$PROJECT_DIR$/Components/Routine/Routine.js" />
-        <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/Components/Routine/Set.js" />
         <option value="$PROJECT_DIR$/Components/Routine/Time.js" />
         <option value="$PROJECT_DIR$/Components/Routine/Exercise.js" />
         <option value="$PROJECT_DIR$/Components/Workout/AddWorkout.js" />
         <option value="$PROJECT_DIR$/Components/Routine/EditRoutine.js" />
         <option value="$PROJECT_DIR$/Components/Workout/Workout.js" />
+        <option value="$PROJECT_DIR$/App.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/package-lock.json" />
       </list>
     </option>
   </component>
@@ -175,23 +178,6 @@
               <item name="hwm-frontend" type="b2602c69:ProjectViewProjectNode" />
               <item name="hwm-frontend" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="hwm-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hwm-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hwm-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hwm-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Routine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hwm-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hwm-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="Workout" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -220,15 +206,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1532191053510</updated>
-      <workItem from="1532191055513" duration="45289000" />
+      <workItem from="1532191055513" duration="45586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45289000" />
+    <option name="totallyTimeSpent" value="45586000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24665257" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -305,13 +292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Components/Routine/Set.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -331,16 +311,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Components/Workout/AddWorkout.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -365,7 +335,7 @@
     <entry file="file://$PROJECT_DIR$/Components/Routine/Routine.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="18" column="11" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="18" selection-end-column="11" />
+          <caret line="18" column="11" selection-start-line="13" selection-start-column="4" selection-end-line="18" selection-end-column="11" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -380,6 +350,30 @@
             <element signature="e#0#26#0" expanded="true" />
             <element signature="n#style#0;n#View#0;n#Modal#0;n#View#0;n#ScrollView#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-589">
+          <caret line="8978" selection-start-line="8978" selection-end-line="8978" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
