@@ -4,6 +4,7 @@ import { Header } from 'react-native-elements';
 import Home from './Components/Home/Home';
 import Routine from './Components/Routine/Routine';
 import Profile from './Components/Profile/Profile';
+import Trainer from './Components/Trainer/Trainer';
 
 const HeaderMenu = (props) => <Header
     leftComponent={{ icon: 'menu', color: '#fff', onPress:props.navigation.openDrawer }}
@@ -33,7 +34,7 @@ const App = createDrawerNavigator({
         screen: Home,
     },
     Trainer: {
-        screen: Home,
+        screen: Trainer,
     },
 
 });
