@@ -8,7 +8,6 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 class Set extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <View>
                 <Grid>

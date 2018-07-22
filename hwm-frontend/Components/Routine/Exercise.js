@@ -61,7 +61,6 @@ class Exercise extends React.Component {
     };
 
     render() {
-        // console.log(this.props.exercise)
         return (
             <ScrollView>
                 <Grid>

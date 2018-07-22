@@ -4,29 +4,33 @@ import {Text, FormInput} from 'react-native-elements';
 import PickerSelect from 'react-native-picker-select';
 import { Footer, FooterTab} from 'native-base';
 import Exercise from '../Routine/Exercise';
+import DatePicker from 'react-native-datepicker'
+import moment from 'moment';
 
-class RoutineComponent extends React.Component {
+class AddWorkout extends React.Component {
     constructor(props) {
         super(props);
 
         this.buildExercise = this.buildExercise.bind(this);
 
-        if(this.props && this.props.navigation.state.params && this.props.navigation.state.params.routine) {
-            const {routine} = this.props.navigation.state.params;
+        console.log(this.props.navigation.state.params);
+
+        if(this.props.navigation.state.params.workout) {
+            const {workout} = this.props.navigation.state.params;
             this.state = {
-                exercises: routine.exerciseList.map(exercise => this.buildExercise(exercise)),
-                name: routine.name,
-                description: routine.description,
-                id: routine.id,
+                routineId: workout.routineId,
+                exercises: workout.exerciseList.map(exercise => this.buildExercise(exercise)),
+                name: workout.name,
+                description: workout.description,
+                date: moment(workout.startDateTime),
             };
-        }
-        else
-        {
+        } else {
             this.state = {
+                routineId: this.props.navigation.state.params.routineId,
                 exercises: [],
                 name: '',
                 description: '',
-                id: undefined,
+                date: moment(),
             };
         }
 
@@ -43,8 +47,26 @@ class RoutineComponent extends React.Component {
         this.buildSets = this.buildSets.bind(this);
     }
 
+    componentDidMount() {
+        if(this.props.navigation.state.params.routineId) {
+            return fetch(`http://18.220.11.7:3000/api/routines/${this.state.routineId}`)
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    this.setState({
+                        exercises: responseJson.exerciseList.map(exercise => this.buildExercise(exercise)),
+                        name: responseJson.name,
+                        description: responseJson.description,
+                        id: responseJson.id,
+                    });
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    };
+
     static navigationOptions = {
-        title: 'Add Routine',
+        title: 'Add Workout',
     };
 
     buildExercise = (exercise) => {
@@ -103,50 +125,53 @@ class RoutineComponent extends React.Component {
     }
 
     onSaveRoutine = () => {
-        const routine = {
+        const workout = {
             name: this.state.name,
             description: this.state.description,
             ownerId: '5b539e78468e507057a12dcd',
-            visibility: 'public',
-            id: this.state.id,
+            routineId: this.state.routineId,
+            startDateTime: this.state.date,
+            endDateTime: this.state.date,
             exerciseList: this.state.exercises.map(exercise => ({
                 id: exercise.id,
                 sets: this.buildSets(exercise),
-            }))
+            })),
+            notes:"testing"
         }
 
-        return fetch('http://18.220.11.7:3000/api/routines', {
+        console.log(workout);
+
+        return fetch('http://18.220.11.7:3000/api/workouts', {
             method: 'PUT',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(routine),
+            body: JSON.stringify(workout),
         })
             .then((response) => response.json())
             .then((responseJson) => {
             })
             .catch((error) => {
                 console.error(error);
-            });;
+            });
     };
 
 
     onAddSet = (index) => {
         const {exercises} = this.state;
-
         exercises[index].sets.push({reps: 0, weight: 0});
 
         this.setState({exercises});
-     };
+    };
 
-     onAddTime = (index) => {
-         const {exercises} = this.state;
+    onAddTime = (index) => {
+        const {exercises} = this.state;
 
-         exercises[index].times.push({minutes: 0, seconds: 0});
+        exercises[index].times.push({minutes: 0, seconds: 0});
 
-         this.setState({exercises});
-     };
+        this.setState({exercises});
+    };
 
     onAddExercise = (exercise) => {
         const {exercises} = this.state;
@@ -222,6 +247,28 @@ class RoutineComponent extends React.Component {
                         multiline={true}
                         onChangeText={(value) => this.setState({description: value})}
                     />
+                    <Text h4>Date</Text>
+                    <DatePicker
+                        style={{width: 300}}
+                        date={this.state.date}
+                        mode="datetime"
+                        placeholder="select date"
+                        format="YYYY-MM-DD HH:mm:A"
+                        confirmBtnText="Confirm"
+                        cancelBtnText="Cancel"
+                        customStyles={{
+                            dateIcon: {
+                                position: 'absolute',
+                                left: 0,
+                                top: 4,
+                                marginLeft: 0
+                            },
+                            dateInput: {
+                                marginLeft: 36
+                            }
+                        }}
+                        onDateChange={(date) => {this.setState({date: date})}}
+                    />
                     <Text h4>Exercises</Text>
                     {this.state.exercises.map((exercise, index) => <Exercise
                         index={index}
@@ -262,5 +309,5 @@ class RoutineComponent extends React.Component {
     }
 }
 
-export default RoutineComponent;
+export default AddWorkout;
 

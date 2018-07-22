@@ -3,6 +3,7 @@ import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import { Header } from 'react-native-elements';
 import Home from './Components/Home/Home';
 import Routine from './Components/Routine/Routine';
+import Workout from './Components/Workout/Workout';
 
 
 const HeaderMenu = (props) => <Header
@@ -32,7 +33,7 @@ const App = createDrawerNavigator({
         screen: Routine,
     },
     Workouts: {
-        screen: Home,
+        screen: Workout,
     },
     Trainer: {
         screen: Home,
