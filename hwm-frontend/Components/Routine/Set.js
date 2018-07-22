@@ -8,6 +8,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 class Set extends React.Component {
     render() {
+        console.log(this.props)
         return (
             <View>
                 <Grid>
@@ -15,12 +16,16 @@ class Set extends React.Component {
                         <Text>Reps</Text>
                         <FormInput
                             keyboardType="number-pad"
+                            value={this.props.reps.toString()}
+                            onChangeText={(value) => this.props.onUpdateReps(value)}
                         />
                     </Col>
                     <Col>
                         <Text>Weight</Text>
                         <FormInput
+                            value={this.props.weight.toString()}
                             keyboardType="number-pad"
+                            onChangeText={(value) => this.props.onUpdateWeight(value)}
                         />
                     </Col>
                 </Grid>

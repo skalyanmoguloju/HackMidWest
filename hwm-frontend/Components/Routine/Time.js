@@ -8,6 +8,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 class Time extends React.Component {
     render() {
+        console.log(this.props)
         return (
             <View>
                 <Grid>
@@ -15,12 +16,16 @@ class Time extends React.Component {
                         <Text>Minutes</Text>
                         <FormInput
                             keyboardType="number-pad"
+                            value={this.props.minutes.toString()}
+                            onChangeText={(value) => this.props.onUpdateMinutes(value)}
                         />
                     </Col>
                     <Col>
                         <Text>Seconds</Text>
                         <FormInput
                             keyboardType="number-pad"
+                            value={this.props.seconds.toString()}
+                            onChangeText={(value) => this.props.onUpdateSeconds(value)}
                         />
                     </Col>
                 </Grid>
