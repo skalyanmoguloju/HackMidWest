@@ -31,6 +31,7 @@ class AddWorkout extends React.Component {
                 name: '',
                 description: '',
                 date: moment(),
+                id: undefined,
             };
         }
 
@@ -56,7 +57,6 @@ class AddWorkout extends React.Component {
                         exercises: responseJson.exerciseList.map(exercise => this.buildExercise(exercise)),
                         name: responseJson.name,
                         description: responseJson.description,
-                        id: responseJson.id,
                     });
                 })
                 .catch((error) => {
@@ -139,8 +139,6 @@ class AddWorkout extends React.Component {
             notes:"testing",
             id: this.state.id,
         }
-
-        console.log(workout);
 
         return fetch('http://18.220.11.7:3000/api/workouts', {
             method: 'PUT',
