@@ -3,11 +3,26 @@ import {ScrollView, Text, StyleSheet, View} from 'react-native';
 import {createStackNavigator} from 'react-navigation';
 import {Header, Avatar, FormInput} from 'react-native-elements';
 import {Col, Row, Grid} from 'react-native-easy-grid';
+import PickerSelect from 'react-native-picker-select';
 
 const HeaderMenu = (props) => <Header
   leftComponent={{ icon: 'menu', color: '#fff', onPress:props.navigation.openDrawer }}
   centerComponent={{ text: 'Profile', style: { color: '#fff' } }}
 />
+
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingTop: 10,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    paddingRight: 12,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    color: 'black',
+  },
+});
 
 class ProfileComponent extends React.Component {
   constructor(props) {
@@ -132,7 +147,11 @@ class ProfileComponent extends React.Component {
                 />
               </Col>
               <Col size={15}>
-                <Text>feet</Text>
+                <Text style={{
+                  paddingTop: 15
+                }}>
+                  feet
+                </Text>
               </Col>
               <Col size={25}>
                 <FormInput
@@ -141,7 +160,11 @@ class ProfileComponent extends React.Component {
                 />
               </Col>
               <Col size={15}>
-                <Text>inches</Text>
+                <Text style={{
+                  paddingTop: 15
+                }}>
+                  inches
+                </Text>
               </Col>
               <Col size={20}>
               </Col>
@@ -157,7 +180,90 @@ class ProfileComponent extends React.Component {
                 />
               </Col>
               <Col size={15}>
-                <Text>lbs</Text>
+                <Text style={{
+                  paddingTop: 15
+                }}>
+                  lbs
+                </Text>
+              </Col>
+              <Col size={60}>
+              </Col>
+            </Row>
+          </Grid>
+        </View>
+        <Text style={{
+          fontSize: 20,
+          fontWeight: 'bold',
+          paddingTop: 10
+        }}>
+          Goals
+        </Text>
+        <View>
+          <Grid>
+            <Row>
+              <Col>
+                <Text>Number of Weekly Workouts</Text>
+              </Col>
+            </Row>
+            <Row>
+              <Col size={25}>
+                <FormInput
+                  // value={}
+                  keyboardType="number-pad" />
+              </Col>
+              <Col size={75}>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Text style={{
+                  paddingTop: 15
+                }}>
+                  Primary Workout Focus
+                </Text>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <PickerSelect
+                  items={[
+                    {
+                      label:"Cardio",
+                      value:"Cardio"
+                    },
+                    {
+                      label:"Strength",
+                      value:"Strength"
+                    },
+                    {
+                      label:"Mix",
+                      value:"Mix"
+                    }]}
+                  style={{ ...pickerSelectStyles }}
+                  onValueChange={()=>{return}}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Text style={{
+                paddingTop: 15
+              }}>
+                Goal Weight
+              </Text>
+            </Row>
+            <Row>
+              <Col size={25}>
+                <FormInput
+                  value={""}
+                  keyboardType="number-pad"
+                />
+              </Col>
+              <Col size={15}>
+                <Text style={{
+                  paddingTop: 15
+                }}>
+                  lbs
+                </Text>
               </Col>
               <Col size={60}>
               </Col>
