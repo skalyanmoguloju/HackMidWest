@@ -12,7 +12,7 @@ class Time extends React.Component {
             <View>
                 <Grid>
                     <Col>
-                        <Text>Minutes</Text>
+                        <Text style={{paddingLeft:10}}>Minutes</Text>
                         <FormInput
                             keyboardType="number-pad"
                             value={this.props.minutes.toString()}
@@ -20,7 +20,7 @@ class Time extends React.Component {
                         />
                     </Col>
                     <Col>
-                        <Text>Seconds</Text>
+                        <Text style={{paddingLeft:10}}>Seconds</Text>
                         <FormInput
                             keyboardType="number-pad"
                             value={this.props.seconds.toString()}

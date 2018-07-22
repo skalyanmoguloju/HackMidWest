@@ -12,7 +12,7 @@ class Set extends React.Component {
             <View>
                 <Grid>
                     <Col>
-                        <Text>Reps</Text>
+                        <Text style={{paddingLeft:10}}>Reps</Text>
                         <FormInput
                             keyboardType="number-pad"
                             value={this.props.reps.toString()}
@@ -20,7 +20,7 @@ class Set extends React.Component {
                         />
                     </Col>
                     <Col>
-                        <Text>Weight</Text>
+                        <Text style={{paddingLeft:10}}>Weight</Text>
                         <FormInput
                             value={this.props.weight.toString()}
                             keyboardType="number-pad"

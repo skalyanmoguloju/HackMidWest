@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, ScrollView, Button, View} from 'react-native';
+import {StyleSheet, ScrollView, Button, View, Alert} from 'react-native';
 import {Text, FormInput} from 'react-native-elements';
 import PickerSelect from 'react-native-picker-select';
 import { Footer, FooterTab} from 'native-base';
@@ -13,7 +13,6 @@ class AddWorkout extends React.Component {
 
         this.buildExercise = this.buildExercise.bind(this);
 
-        console.log(this.props.navigation.state.params);
 
         if(this.props.navigation.state.params.workout) {
             const {workout} = this.props.navigation.state.params;
@@ -23,6 +22,7 @@ class AddWorkout extends React.Component {
                 name: workout.name,
                 description: workout.description,
                 date: moment(workout.startDateTime),
+                id: workout.id,
             };
         } else {
             this.state = {
@@ -136,7 +136,8 @@ class AddWorkout extends React.Component {
                 id: exercise.id,
                 sets: this.buildSets(exercise),
             })),
-            notes:"testing"
+            notes:"testing",
+            id: this.state.id,
         }
 
         console.log(workout);
@@ -151,6 +152,9 @@ class AddWorkout extends React.Component {
         })
             .then((response) => response.json())
             .then((responseJson) => {
+                Alert.alert(
+                    'Successful'
+                )
             })
             .catch((error) => {
                 console.error(error);
@@ -236,20 +240,20 @@ class AddWorkout extends React.Component {
         return (
             <View style={{flex: 1}}>
                 <ScrollView>
-                    <Text h4>Name</Text>
+                    <Text h4 style={{paddingLeft:10}}>Name</Text>
                     <FormInput
                         value={this.state.name}
                         onChangeText={(value) => this.setState({name: value})}
                     />
-                    <Text h4>Description</Text>
+                    <Text h4 style={{paddingLeft:10}}>Description</Text>
                     <FormInput
                         value={this.state.description}
                         multiline={true}
                         onChangeText={(value) => this.setState({description: value})}
                     />
-                    <Text h4>Date</Text>
+                    <Text h4 style={{paddingLeft:10}}>Date</Text>
                     <DatePicker
-                        style={{width: 300}}
+                        style={{width: 300, paddingLeft:10}}
                         date={this.state.date}
                         mode="datetime"
                         placeholder="select date"
@@ -269,7 +273,7 @@ class AddWorkout extends React.Component {
                         }}
                         onDateChange={(date) => {this.setState({date: date})}}
                     />
-                    <Text h4>Exercises</Text>
+                    <Text h4 style={{paddingLeft:10}}>Exercises</Text>
                     {this.state.exercises.map((exercise, index) => <Exercise
                         index={index}
                         key={index}
@@ -299,6 +303,7 @@ class AddWorkout extends React.Component {
 
                             <Button
                                 title="Cancel"
+                                onPress={() => {}}
                             />
                         </FooterTab>
                     </Footer>

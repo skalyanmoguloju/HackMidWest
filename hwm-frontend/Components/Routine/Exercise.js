@@ -12,6 +12,7 @@ const pickerSelectStyles = StyleSheet.create({
         paddingTop: 10,
         paddingHorizontal: 10,
         paddingBottom: 10,
+        marginLeft: 10,
         paddingRight: 12,
         borderWidth: 1,
         borderColor: 'gray',
@@ -65,7 +66,7 @@ class Exercise extends React.Component {
             <ScrollView>
                 <Grid>
                     <Col>
-                        <Text>Exercise</Text>
+                        <Text style={{paddingLeft:10}}>Exercise</Text>
                         <PickerSelect
                             value={this.props.exercise.id}
                             items={this.getExercises()}

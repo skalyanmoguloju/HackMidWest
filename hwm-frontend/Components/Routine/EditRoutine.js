@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, ScrollView, Button, View} from 'react-native';
+import {StyleSheet, ScrollView, Button, View, Alert} from 'react-native';
 import {Text, FormInput} from 'react-native-elements';
 import PickerSelect from 'react-native-picker-select';
 import { Footer, FooterTab} from 'native-base';
@@ -125,10 +125,14 @@ class RoutineComponent extends React.Component {
         })
             .then((response) => response.json())
             .then((responseJson) => {
+                Alert.alert(
+                    'Successful'
+                )
+
             })
             .catch((error) => {
                 console.error(error);
-            });;
+            });
     };
 
 
@@ -211,18 +215,18 @@ class RoutineComponent extends React.Component {
         return (
             <View style={{flex: 1}}>
                 <ScrollView>
-                    <Text h4>Name</Text>
+                    <Text h4 style={{paddingLeft:10}}>Name</Text>
                     <FormInput
                         value={this.state.name}
                         onChangeText={(value) => this.setState({name: value})}
                     />
-                    <Text h4>Description</Text>
+                    <Text h4 style={{paddingLeft:10}}>Description</Text>
                     <FormInput
                         value={this.state.description}
                         multiline={true}
                         onChangeText={(value) => this.setState({description: value})}
                     />
-                    <Text h4>Exercises</Text>
+                    <Text h4 style={{paddingLeft:10}}>Exercises</Text>
                     {this.state.exercises.map((exercise, index) => <Exercise
                         index={index}
                         key={index}

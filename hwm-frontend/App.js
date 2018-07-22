@@ -8,19 +8,6 @@ import Title from './Components/Title/Title';
 import Profile from './Components/Profile/Profile';
 import Trainer from './Components/Trainer/Trainer';
 
-const HeaderMenu = (props) => <Header
-    leftComponent={{ icon: 'menu', color: '#fff', onPress:props.navigation.openDrawer }}
-    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-/>
-
-const Main = createStackNavigator({
-    Home: {
-        navigationOptions: {
-            header: HeaderMenu,
-        },
-        screen : Home,
-    },
-});
 
 const App = createDrawerNavigator({
     Home: {
