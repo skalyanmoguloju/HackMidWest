@@ -73,7 +73,7 @@ class Exercise extends React.Component {
                             style={{ ...pickerSelectStyles }}
                         />
                     </Col>
-                    <Col style={{ width: 40 }}>
+                    <Col style={{ width: 40, paddingTop: 25 }}>
                         <Icon
                             name="delete"
                             color="red"
