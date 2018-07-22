@@ -65,7 +65,6 @@ class TrainerComponent extends React.Component {
     selectedPlace.distance = place.venue.location.distance;
     this.setState({ selectedPlace });
     this.setState({ isHidden: false });
-    console.log(selectedPlace.rating);
   }
 
   renderDetailMenu = () => {
@@ -105,11 +104,6 @@ class TrainerComponent extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button
-          style={styles.button}
-          onPress={this.findGyms}
-          title="Find a Nearby Gym"
-        />
         <MapView style={styles.map}
           region={{
             latitude: this.state.latitude,
@@ -138,7 +132,17 @@ class TrainerComponent extends React.Component {
             </MapView.Marker>
           )}
         </MapView>
-          {this.renderDetailMenu()}
+
+        <View style={styles.buttonWrapper}>
+          <Button
+            onPress={this.findGyms}
+            title="Find a Nearby Gym"
+            color="#ffffff"
+          />
+        </View>
+        
+        
+        {this.renderDetailMenu()}
       </View>
     );
   }
@@ -153,22 +157,16 @@ const styles = StyleSheet.create({
     right: 0,
     alignItems: 'center'
   },
-  button: {
-    position: 'absolute',
-    top: 0,
-    marginBottom: 20,
-  },
   map: {
     position: 'absolute',
-    top: 50,
-    left: 50,
-    right: 50,
+    top: 0,
+    left: 0,
+    right: 0,
     height: 300,
     borderRadius: 4,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
-    marginBottom: 20
-
+    marginBottom: 30
   },
   detail: {
     position: 'absolute',
@@ -176,7 +174,18 @@ const styles = StyleSheet.create({
     top: 370,
     left: 30,
     right: 30,
+    borderRadius: 10,
     alignItems: 'center'
+  },
+  buttonWrapper: {
+    position: 'absolute',
+    paddingVertical: 0,
+    paddingHorizontal: 40,
+    top: 320,
+    backgroundColor: '#4286f4',
+    borderColor: '#4286f4',
+    borderRadius: 20,
+    borderWidth: 0.5
   }
 });
 
