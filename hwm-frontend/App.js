@@ -4,7 +4,7 @@ import { Header } from 'react-native-elements';
 import Home from './Components/Home/Home';
 import Routine from './Components/Routine/Routine';
 import Workout from './Components/Workout/Workout';
-
+import Title from './Components/Title/Title';
 import Profile from './Components/Profile/Profile';
 import Trainer from './Components/Trainer/Trainer';
 
@@ -24,7 +24,7 @@ const Main = createStackNavigator({
 
 const App = createDrawerNavigator({
     Home: {
-        screen: Main,
+        screen: Title,
     },
     Profile: {
         screen: Profile,
