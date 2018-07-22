@@ -3,6 +3,7 @@ import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 
 import { ScrollView, TouchableOpacity,  } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Routine from '../Routine/Routine';
+import Workout from '../Workout/Workout';
 
 import { Header } from 'react-native-elements';
 
@@ -21,17 +22,19 @@ class TitleComponent extends React.Component {
             title=""
           />
         </Card>
-        <Card>
-          <CardImage
-            source={{uri: 'https://c2.staticflickr.com/4/3839/14211483907_9fd780b734_b.jpg'}}
-            title="Start a Workout"
-          />
-        </Card>
+        <TouchableOpacity onPress={() => {this.props.navigation.navigate("Workout")}}>
+            <Card>
+              <CardImage
+                source={require('../../images/start_a_workout.jpg')}
+                title="Start a Workout"
+              />
+            </Card>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.props.navigation.navigate("Routine")}}>
             <Card>
              <CardImage
-                source={{uri: 'https://www.publicdomainpictures.net/pictures/220000/velka/open-blank-notebook-black-amp-white.jpg'}}
-                title="Manage Routines"s
+                source={require('../../images/manage_routines_edited.jpg')}
+                title="Manage Routines"
               />
             </Card>
         </TouchableOpacity>
@@ -51,7 +54,9 @@ const Title = createStackNavigator({
     Routine: {
         screen: Routine
     },
-
+    Workout: {
+        screen: Workout
+    }
 });
 
 export default Title;
