@@ -113,11 +113,11 @@ class TrainerComponent extends React.Component {
           }}
         >
           <MapView.Marker
-            ref={marker => { this.marker = marker }}
             coordinate={{
               latitude: this.state.latitude,
               longitude: this.state.longitude,
             }}
+            pinColor={'#4286f4'}
           />
           {this.state.places.map(
             place => <MapView.Marker
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     top: 320,
     backgroundColor: '#4286f4',
     borderColor: '#4286f4',
-    borderRadius: 20,
+    borderRadius: 4,
     borderWidth: 0.5
   }
 });
