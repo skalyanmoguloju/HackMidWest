@@ -3,14 +3,12 @@ import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import { Header } from 'react-native-elements';
 import Home from './Components/Home/Home';
 import Routine from './Components/Routine/Routine';
-
+import Profile from './Components/Profile/Profile';
 
 const HeaderMenu = (props) => <Header
     leftComponent={{ icon: 'menu', color: '#fff', onPress:props.navigation.openDrawer }}
     centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
 />
-
-
 
 const Main = createStackNavigator({
     Home: {
@@ -26,7 +24,7 @@ const App = createDrawerNavigator({
         screen: Main,
     },
     Profile: {
-        screen: Home,
+        screen: Profile,
     },
     Routines: {
         screen: Routine,
